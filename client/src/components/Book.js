@@ -6,9 +6,9 @@ class Book extends Component {
         this.state = {};
     }
     render() {
-        const { name, index } = this.props;
+        const { name, index, onBookClick } = this.props;
         return (
-            <li>
+            <li onClick={onBookClick}>
                 ({ index }). {name}
             </li>
         );

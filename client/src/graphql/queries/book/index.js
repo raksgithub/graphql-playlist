@@ -7,8 +7,19 @@ export const getBooksQuery = gql`query {
     }
 }`;
 
-// export const getBookQuery = gql` query{
-//     book() {
-
-//     }
-// }`;
+export const getBookQuery = gql`query($bookId: ID!) {
+    book(id: $bookId) {
+        id
+        name
+        genre
+        author {
+            id
+            name
+            age
+            books {
+                id
+                name
+            }
+        }
+    }
+}`;
