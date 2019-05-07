@@ -26,6 +26,11 @@ class AddBook extends Component {
                 query: getBooksQuery
             }]
         });
+        this.setState({
+            name: '',
+            genre: '',
+            authorId: ''
+        });
     }
     /* Rener authors start */
     renderAuthors(authors) {
@@ -47,6 +52,7 @@ class AddBook extends Component {
                         name='bookName' 
                         className="form-control" 
                         placeholder="Book Name"
+                        value={this.state.name}
                         onChange={e => this.setState({ name: e.target.value })} 
                     />
                 </div>
@@ -56,6 +62,7 @@ class AddBook extends Component {
                         name='genre' 
                         className="form-control" 
                         placeholder="Genre"
+                        value={this.state.genre}
                         onChange={e => this.setState({ genre: e.target.value })} 
                     />
                 </div>
@@ -64,6 +71,7 @@ class AddBook extends Component {
                     <select 
                         name="authors" 
                         className="form-control"
+                        value={this.state.authorId}
                         onChange={e => this.setState({ authorId: e.target.value })}
                     >
                         <option>--Select Author--</option>
