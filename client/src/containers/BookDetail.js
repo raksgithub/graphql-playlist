@@ -8,9 +8,16 @@ class BookDetail extends Component {
         this.state = {};
     }
     render() {
-        const { bookId, getBookQuery: { book } } = this.props;
-        if(!book) {
+        const { bookId, getBookQuery: { book, loading } } = this.props;
+        if (!book) {
             return <div>Select one book to display its details here.</div>
+        }
+        if (loading) {
+            return (
+                <div style={{ textAlign: 'center' }}>
+                    Loading...
+                </div>
+            );
         }
         return (
             <div className="card w-80">
@@ -24,7 +31,7 @@ class BookDetail extends Component {
                         <div>
                             <span>Books written:</span>
                             <ul>{book.author.books.map(b => <li key={b.id}>{b.name}</li>)}</ul>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,11 +41,13 @@ class BookDetail extends Component {
 
 export default compose(
     // Here bookId => props.bookId. This props comes from parent Books component.
-    graphql(getBookQuery, { name: 'getBookQuery', options: ({ bookId }) => {
-        return {
-            variables: {
-                bookId
+    graphql(getBookQuery, {
+        name: 'getBookQuery', options: ({ bookId }) => {
+            return {
+                variables: {
+                    bookId
+                }
             }
         }
-    }})
+    })
 )(BookDetail);
