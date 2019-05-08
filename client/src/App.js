@@ -2,7 +2,14 @@ import React from 'react';
 import Books from './containers/Books';
 import AddBook from './containers/AddBook';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+
+// Static files
+
+// CSS
+import './styles/css/App.css';
+
+// SCSS
+import './styles/scss/main.scss';
 
 function App() {
   return (
