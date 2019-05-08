@@ -45,7 +45,7 @@ class AddBook extends Component {
         const { loading, authors } = this.props.getAuthorsQuery;
         if (loading) return <div>Loading...</div>;
         return (
-            <form onSubmit={this.handleFormSubmit}>
+            <form onSubmit={this.handleFormSubmit} className="mt-2">
                 <div className="form-group">
                     <label>Book Name</label>
                     <input 

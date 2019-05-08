@@ -8,9 +8,7 @@ class BookDetail extends Component {
         this.state = {};
     }
     render() {
-        console.log('BookId=>>> ', this.props.bookId);
         const { bookId, getBookQuery: { book } } = this.props;
-        console.log('Book', book);
         if(!book) {
             return <div>Select one book to display its details here.</div>
         }
@@ -35,7 +33,7 @@ class BookDetail extends Component {
 }
 
 export default compose(
-    // Here bookId => props.bookId. It comes from props.
+    // Here bookId => props.bookId. This props comes from parent Books component.
     graphql(getBookQuery, { name: 'getBookQuery', options: ({ bookId }) => {
         return {
             variables: {
