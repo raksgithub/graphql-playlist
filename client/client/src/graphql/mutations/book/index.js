@@ -6,10 +6,3 @@ export const addBookMutation = gql`mutation($name: String!, $genre: String!, $au
         id
     }
 }`;
-
-export const deleteBookMutation = gql`mutation($bookId: ID!) {
-    deleteBook(id: $bookId) {
-        name
-        id
-    }
-}`;

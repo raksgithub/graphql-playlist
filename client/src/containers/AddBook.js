@@ -4,6 +4,9 @@ import { getAuthorsQuery } from '../graphql/queries/author';
 import { addBookMutation } from '../graphql/mutations/book';
 import { getBooksQuery } from '../graphql/queries/book';
 
+// Components
+import Loader from '../components/common/Loader';
+
 class AddBook extends Component {
     constructor(props) {
         super(props);
@@ -43,48 +46,60 @@ class AddBook extends Component {
     /* Rener authors end */
     render() {
         const { loading, authors } = this.props.getAuthorsQuery;
-        if (loading) return <div>Loading...</div>;
+        if (loading) return (
+            <div className='loader'>
+                <Loader
+                    type='CradleLoader'
+                    color='#00BFFF'
+                    widht='100'
+                    height='100'
+                />
+            </div>
+        );
         return (
-            <form onSubmit={this.handleFormSubmit} className="mt-2">
-                <div className="form-group">
-                    <label>Book Name</label>
-                    <input 
-                        name='bookName' 
-                        className="form-control" 
-                        placeholder="Book Name"
-                        value={this.state.name}
-                        onChange={e => this.setState({ name: e.target.value })} 
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Genre</label>
-                    <input 
-                        name='genre' 
-                        className="form-control" 
-                        placeholder="Genre"
-                        value={this.state.genre}
-                        onChange={e => this.setState({ genre: e.target.value })} 
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Authors</label>
-                    <select 
-                        name="authors" 
-                        className="form-control"
-                        value={this.state.authorId}
-                        onChange={e => this.setState({ authorId: e.target.value })}
-                    >
-                        <option>--Select Author--</option>
-                        { this.renderAuthors(authors) }
-                    </select>
-                </div>
-                <button type="submit" className="btn btn-primary">Add Book</button>
-            </form>
+            <div>
+                <h2>Add New Book</h2>
+                <form onSubmit={this.handleFormSubmit} className="mt-2">
+                    <div className="form-group">
+                        <label>Book Name</label>
+                        <input
+                            name='bookName'
+                            className="form-control"
+                            placeholder="Book Name"
+                            value={this.state.name}
+                            onChange={e => this.setState({ name: e.target.value })}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Genre</label>
+                        <input
+                            name='genre'
+                            className="form-control"
+                            placeholder="Genre"
+                            value={this.state.genre}
+                            onChange={e => this.setState({ genre: e.target.value })}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Authors</label>
+                        <select
+                            name="authors"
+                            className="form-control"
+                            value={this.state.authorId}
+                            onChange={e => this.setState({ authorId: e.target.value })}
+                        >
+                            <option>--Select Author--</option>
+                            {this.renderAuthors(authors)}
+                        </select>
+                    </div>
+                    <button type="submit" className="btn btn-primary">Add Book</button>
+                </form>
+            </div>
         );
     }
 }
 
 export default compose(
     graphql(getAuthorsQuery, { name: 'getAuthorsQuery' }),
-    graphql(addBookMutation, { name: 'addBookMutation' }), 
+    graphql(addBookMutation, { name: 'addBookMutation' }),
 )(AddBook); 

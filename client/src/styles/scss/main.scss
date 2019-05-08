@@ -16,3 +16,28 @@
         font-size: 20px;
     }
 }
+
+.loader {
+    position: relative;
+    // left: 200px;
+    text-align: center;
+    margin: 100px;
+}
+
+.book-list-header {
+    font-size: 20px;
+    .add-navigation-button {
+        position: relative;
+        left: 978px;
+        text-decoration: none;
+        button {
+            width: 50px;
+            height: 46px;
+            border-radius: 20px 20px 20px 20px;
+            background-color: rgba(144, 47, 151, 0.671);
+            border: none;
+            color: white;
+            font-size: 30px;
+        }
+    }
+}
