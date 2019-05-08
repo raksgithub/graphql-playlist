@@ -17,16 +17,17 @@ class Books extends React.Component {
         return (
             <div className="row">
                 <div className="col-sm-8 col-6">
-                    <ul>
+                    <div className="list-group">
                         {books.map((book, index) => (
                             <Book
                                 key={book.id}
+                                id={book.id}
                                 name={book.name}
                                 index={index}
                                 onBookClick={() => this.setState({ selectedBookId: book.id })}
                             />
                         ))}
-                    </ul>
+                    </div>
                 </div>
                 <div className="col-sm-4 col-6">
                     <BookDetail bookId={this.state.selectedBookId} />
