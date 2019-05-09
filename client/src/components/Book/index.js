@@ -17,6 +17,7 @@ class Book extends Component {
         this.handleShow = this.handleShow.bind(this);
         this.handleHide = this.handleHide.bind(this);
     }
+    
     async handleDeleteBook(bookId) {
         const { deleteBookMutation } = this.props;
         console.log('BookId', bookId);
