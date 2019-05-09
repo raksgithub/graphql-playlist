@@ -5,8 +5,10 @@ import client from './graphql/ApolloClient';
 import { ApolloProvider } from 'react-apollo';
 
 // Components
-import Books from './containers/Books';
-import AddBook from './containers/AddBook';
+import Books from './containers/Book/Books';
+import Author from './containers/Author';
+import AddBook from './containers/Book/AddBook';
+import AddAuthor from './containers/Author/AddAuthor';
 import LandingPage from './components/LandingPage';
 import AppNavBar from './components/common/AppNavBar';
 
@@ -31,6 +33,8 @@ function App() {
                             <Route path='/' exact component={LandingPage} />
                             <Route path='/books' exact component={Books} />
                             <Route path='/addBook' exact component={AddBook} />
+                            <Route path='/authors' exact component={Author} />
+                            <Route path='/addAuthor' exact component={AddAuthor} />
                         </div>
                     </Switch>
                 </Router>

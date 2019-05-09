@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { getBookQuery } from '../graphql/queries/book';
-import Loader from '../components/common/Loader';
+import { getBookQuery } from '../../graphql/queries/book';
+import Loader from '../../components/common/Loader';
 
 class BookDetail extends Component {
     constructor(props) {
