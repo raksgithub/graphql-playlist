@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { getAuthorsQuery } from '../graphql/queries/author';
-import { addBookMutation } from '../graphql/mutations/book';
-import { getBooksQuery } from '../graphql/queries/book';
+import { getAuthorsQuery } from '../../graphql/queries/author';
+import { addBookMutation } from '../../graphql/mutations/book';
+import { getBooksQuery } from '../../graphql/queries/book';
 
 // Components
-import Loader from '../components/common/Loader';
+import Loader from '../../components/common/Loader';
 
 class AddBook extends Component {
     constructor(props) {

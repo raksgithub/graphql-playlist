@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { deleteBookMutation } from '../graphql/mutations/book';
-import { getBooksQuery } from '../graphql/queries/book';
+import { deleteBookMutation } from '../../graphql/mutations/book';
+import { getBooksQuery } from '../../graphql/queries/book';
 import { get as _get } from 'lodash';
 
 // Components
-import DeleteModal from './common/DeleteModal';
+import DeleteModal from '../common/DeleteModal';
 
 class Book extends Component {
     constructor(props) {

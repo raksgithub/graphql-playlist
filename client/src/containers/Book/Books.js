@@ -1,12 +1,11 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
-import Book from '../components/Book';
-import { getBooksQuery } from '../graphql/queries/book';
+import Book from '../../components/Book';
+import { getBooksQuery } from '../../graphql/queries/book';
 
 // Components
-import Loader from '../components/common/Loader';
+import Loader from '../../components/common/Loader';
 import BookDetail from './BookDetail';
-import { Button } from 'react-bootstrap';
 
 class Books extends React.Component {
     constructor(props) {
