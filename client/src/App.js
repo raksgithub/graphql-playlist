@@ -6,7 +6,7 @@ import { ApolloProvider } from 'react-apollo';
 
 // Components
 import Books from './containers/Book/Books';
-import Author from './containers/Author';
+import AuthorContainer from './containers/Author';
 import AddBook from './containers/Book/AddBook';
 import AddAuthor from './containers/Author/AddAuthor';
 import LandingPage from './components/LandingPage';
@@ -33,7 +33,7 @@ function App() {
                             <Route path='/' exact component={LandingPage} />
                             <Route path='/books' exact component={Books} />
                             <Route path='/addBook' exact component={AddBook} />
-                            <Route path='/authors' exact component={Author} />
+                            <Route path='/authors' exact component={AuthorContainer} />
                             <Route path='/addAuthor' exact component={AddAuthor} />
                         </div>
                     </Switch>
