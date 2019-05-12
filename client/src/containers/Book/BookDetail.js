@@ -32,11 +32,11 @@ class BookDetail extends Component {
                     <hr />
                     <span className="card-title">{book.genre}</span>
                     <div>
-                        Author: <span>{book.author.name}</span><br />
-                        age: <span>{book.author.age}</span>
+                        Author: <span>{book.author ? book.author.name : 'No Author'}</span><br />
+                        age: <span>{book.author ? book.author.age : 'No Age'}</span>
                         <div>
                             <span>Books written:</span>
-                            <ul>{book.author.books.map(b => <li key={b.id}>{b.name}</li>)}</ul>
+                            <ul>{book.author ? book.author.books.map(b => <li key={b.id}>{b.name}</li>) : 'No Books'}</ul>
                         </div>
                     </div>
                 </div>

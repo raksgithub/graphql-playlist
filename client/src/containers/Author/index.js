@@ -5,6 +5,7 @@ import { getAuthorsQuery } from '../../graphql/queries/author'
 // Components
 import Loader from '../../components/common/Loader';
 import Author from '../../components/Author';
+import AuthorDetail from './AuthorDetail';
 
 class AuthorContainer extends Component {
     constructor(props) {
@@ -58,7 +59,9 @@ class AuthorContainer extends Component {
                                         </div>
                                     </div>
                                     <div className="col-sm-4 col-6">
-                                        {/* <BookDetail bookId={this.state.selectedBookId} /> */}
+                                        <AuthorDetail
+                                            authorId={this.state.selectedAuthorId} 
+                                        />
                                     </div>
                                 </div>
                             </div>
