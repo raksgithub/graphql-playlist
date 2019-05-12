@@ -48,6 +48,7 @@ class AddAuthor extends Component {
                                         className="form-control"
                                         placeholder="Author Name"
                                         value={this.state.name}
+                                        autocomplete="off"
                                         onChange={e => this.setState({ name: e.target.value })}
                                     />
                                 </div>
@@ -55,10 +56,11 @@ class AddAuthor extends Component {
                                     <label>Author Age</label>
                                     <input
                                         type='number'
-                                        name='genre'
+                                        name='ager'
                                         className="form-control"
-                                        placeholder="Genre"
+                                        placeholder="Age"
                                         value={this.state.genre}
+                                        autocomplete="off"
                                         onChange={e => this.setState({ age: parseInt(e.target.value) })}
                                     />
                                 </div>

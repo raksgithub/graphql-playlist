@@ -8,9 +8,15 @@ export const getAuthorsQuery = gql`query {
     }
 }`;
 
-// export const getAuthorQuery = gql`query {
-//     author() {
-//         name
-//         id
-//     }
-// }`;
+export const getAuthorQuery = gql`query($authorId: ID!) {
+    author(id: $authorId) {
+        id
+        name
+        age
+        books {
+            id
+            name
+            genre
+        }
+    }
+}`;

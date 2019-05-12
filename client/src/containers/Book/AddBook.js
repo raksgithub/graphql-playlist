@@ -34,6 +34,7 @@ class AddBook extends Component {
             genre: '',
             authorId: ''
         });
+        this.props.history.push('/books');
     }
     /* Rener authors start */
     renderAuthors(authors) {
@@ -67,6 +68,7 @@ class AddBook extends Component {
                             className="form-control"
                             placeholder="Book Name"
                             value={this.state.name}
+                            autocomplete="off"
                             onChange={e => this.setState({ name: e.target.value })}
                         />
                     </div>
@@ -77,6 +79,7 @@ class AddBook extends Component {
                             className="form-control"
                             placeholder="Genre"
                             value={this.state.genre}
+                            autocomplete="off"
                             onChange={e => this.setState({ genre: e.target.value })}
                         />
                     </div>
