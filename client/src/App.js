@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
 import client from './graphql/ApolloClient';
 import { ApolloProvider } from 'react-apollo';
@@ -21,22 +21,21 @@ import './styles/css/App.css';
 // SCSS
 import './styles/scss/main.scss';
 
-function App() {
-    console.log('Apollo Client=>>', client);
+const App = () => {
     return (
         <div>
             <ApolloProvider client={client}>
                 <Router history={history}>
                     <AppNavBar />
-                    <Switch>
-                        <div className='container'>
+                    <div className="container">
+                        <Switch>
                             <Route path='/' exact component={LandingPage} />
                             <Route path='/books' exact component={Books} />
                             <Route path='/addBook' exact component={AddBook} />
                             <Route path='/authors' exact component={AuthorContainer} />
                             <Route path='/addAuthor' exact component={AddAuthor} />
-                        </div>
-                    </Switch>
+                        </Switch>
+                    </div>
                 </Router>
             </ApolloProvider>
         </div>
