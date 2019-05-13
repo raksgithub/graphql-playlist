@@ -29,9 +29,7 @@ class AuthorDetail extends Component {
         return (
             <Query
                 query={getAuthorQuery}
-                variables={{
-                    authorId
-                }}
+                variables={{ authorId }}
             >
                 {
                     ({ data, loading, error }) => {
