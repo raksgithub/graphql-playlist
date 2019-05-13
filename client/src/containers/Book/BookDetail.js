@@ -10,9 +10,10 @@ class BookDetail extends Component {
     }
     render() {
         const { bookId, getBookQuery: { book, loading } } = this.props;
-        if (!book) {
+        if (!book || !bookId) {
             return <div>Select one book to display its details here.</div>
         }
+        console.log('BookId=>>>', bookId);
         if (loading) {
             return (
                 <div className='loader'>
@@ -30,7 +31,7 @@ class BookDetail extends Component {
                 <div className="card-body">
                     <h5 className="card-title">{book.name}</h5>
                     <hr />
-                    <span className="card-title">{book.genre}</span>
+                    <span className="card-title">Genre: {book.genre}</span>
                     <div>
                         Author: <span>{book.author ? book.author.name : 'No Author'}</span><br />
                         age: <span>{book.author ? book.author.age : 'No Age'}</span>
