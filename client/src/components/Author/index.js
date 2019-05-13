@@ -43,7 +43,7 @@ class Author extends React.Component {
     }
 
     render() {
-        const { id, name, index, age, onAuthorClick } = this.props;
+        const { id, name, age, onAuthorClick } = this.props;
         return (
             <Mutation mutation={deleteAuthorMutation}>
                 {
@@ -51,6 +51,7 @@ class Author extends React.Component {
                         <div className="row-item list-group-item">
                             <div className="bookName" onClick={onAuthorClick}>
                                 {name}
+                                Age: {age}
                             </div>
                             <div>
                                 <button className="btn btn-secondary mx-2">Edit</button>

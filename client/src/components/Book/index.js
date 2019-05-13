@@ -41,7 +41,7 @@ class Book extends Component {
     }
 
     render() {
-        const { id, name, index, onBookClick } = this.props;
+        const { id, name, onBookClick } = this.props;
         return (
             <Mutation mutation={deleteBookMutation}>
                 {
