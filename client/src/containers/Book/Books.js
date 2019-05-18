@@ -13,6 +13,10 @@ class Books extends React.Component {
         this.state = {
             selectedBookId: null
         }
+        this.handleBookDelete = this.handleBookDelete.bind(this);
+    }
+    handleBookDelete(deletedbookId) {
+        this.setState({ selectedBookId: deletedbookId });
     }
     render() {
         const { loading, books } = this.props.getBooksQuery;
@@ -39,7 +43,7 @@ class Books extends React.Component {
                 <hr />
                 <Book
                     tableData={books}
-                    // onBookClick={() => this.setState({ selectedBookId: book.id })}
+                    onBookClick={this.handleBookDelete}
                 />
             </div>
         );

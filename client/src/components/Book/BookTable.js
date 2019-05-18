@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Components
-import Table from '../common/Table/Table';
+import Table from '../common/Table';
 
 class BookTable extends Component {
     columns = () => [{
@@ -67,6 +67,7 @@ class BookTable extends Component {
                     data={data}
                     keyField='id'
                     exportCSV={true}
+                    search={true}
                     noDataIndication={this.indication()}
                     defaultSorted={this.defaultSorted()}
                     selectRow={this.selectRow()}
