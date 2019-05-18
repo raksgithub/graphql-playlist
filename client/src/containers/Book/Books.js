@@ -5,7 +5,6 @@ import { getBooksQuery } from '../../graphql/queries/book';
 
 // Components
 import Loader from '../../components/common/Loader';
-import BookDetail from './BookDetail';
 
 // Mappers
 import { mapBookTableData } from '../../mappers/book';

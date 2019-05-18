@@ -48,7 +48,7 @@ class Book extends Component {
     }
 
     render() {
-        const { id, tableData } = this.props;
+        const { tableData } = this.props;
         return (
             <Mutation mutation={deleteBookMutation}>
                 {
