@@ -5,6 +5,10 @@
     @include flex-row-space-between();
 }
 
+.flex-row {
+    @include flex-row-space-between();
+}
+
 .bookName {
     width: 540px;
     background-color: rgba(112, 95, 160, 0.24);

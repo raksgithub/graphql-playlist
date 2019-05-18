@@ -67,6 +67,7 @@ class BookTable extends Component {
                     data={data}
                     keyField='id'
                     exportCSV={true}
+                    search={true}
                     noDataIndication={this.indication()}
                     defaultSorted={this.defaultSorted()}
                     selectRow={this.selectRow()}
