@@ -7,7 +7,6 @@ import { get as _get } from 'lodash';
 // Components
 import DeleteModal from '../common/DeleteModal';
 import BookTable from './BookTable';
-import { Tab, Table } from 'react-bootstrap';
 
 class Book extends Component {
     constructor(props) {
@@ -15,7 +14,7 @@ class Book extends Component {
         this.state = {
             show: false,
             bookId: null,
-            lastDeletedBook: {}
+            lastDeletedBook: {},
         };
         this.handleDeleteBook = this.handleDeleteBook.bind(this);
         this.handleShow = this.handleShow.bind(this);
