@@ -29,7 +29,7 @@ class Books extends React.Component {
         return (
             <div>
                 <div className='book-list-header'>
-                    Book List
+                    Book Table
                     <span className='add-navigation-button'>
                         <button onClick={() => this.props.history.push('/addBook')}>
                             +
@@ -37,24 +37,10 @@ class Books extends React.Component {
                     </span>
                 </div>
                 <hr />
-                <div className="row">
-                    <div className="col-sm-8 col-6">
-                        <div className="list-group">
-                            {books.map((book, index) => (
-                                <Book
-                                    key={book.id}
-                                    id={book.id}
-                                    name={book.name}
-                                    index={index}
-                                    onBookClick={() => this.setState({ selectedBookId: book.id })}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div className="col-sm-4 col-6">
-                        <BookDetail bookId={this.state.selectedBookId} />
-                    </div>
-                </div>
+                <Book
+                    tableData={books}
+                    // onBookClick={() => this.setState({ selectedBookId: book.id })}
+                />
             </div>
         );
     }

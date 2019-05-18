@@ -6,12 +6,15 @@ import { get as _get } from 'lodash';
 
 // Components
 import DeleteModal from '../common/DeleteModal';
+import BookTable from './BookTable';
+import { Tab, Table } from 'react-bootstrap';
 
 class Book extends Component {
     constructor(props) {
         super(props);
         this.state = {
             show: false,
+            bookId: null,
             lastDeletedBook: {}
         };
         this.handleDeleteBook = this.handleDeleteBook.bind(this);
@@ -19,8 +22,8 @@ class Book extends Component {
         this.handleHide = this.handleHide.bind(this);
     }
 
-    async handleDeleteBook(bookId, deleteBook) {
-        console.log('BookId', bookId);
+    async handleDeleteBook(deleteBook) {
+        const { bookId } = this.state;
         const response = await deleteBook({
             variables: {
                 bookId
@@ -32,7 +35,11 @@ class Book extends Component {
         this.props.handleBookDelete(_get(response, 'data.deleteBook', {}));
     }
 
-    handleShow() {
+    handleShow(bookId) {
+        this.setState({ show: true, bookId });
+    }
+
+    handleEditShow() {
         this.setState({ show: true });
     }
 
@@ -41,35 +48,27 @@ class Book extends Component {
     }
 
     render() {
-        const { id, name, onBookClick } = this.props;
+        const { id, tableData } = this.props;
         return (
             <Mutation mutation={deleteBookMutation}>
                 {
                     (deleteBook, { data }) => (
-                        <div className="row-item list-group-item">
-                            <div onClick={onBookClick} className="bookName">
-                                {name}
-                            </div>
-                            <div>
-                                <button className="btn btn-secondary mx-2">Edit</button>
-                                <button
-                                    type="button"
-                                    className="btn btn-danger"
-                                    onClick={this.handleShow}
-                                >
-                                    Delete
-                                </button>
-                                <DeleteModal
-                                    show={this.state.show}
-                                    title={name}
-                                    body={'Do you want to delete this book ?'}
-                                    deleteButtonDisplayText='Delete Book'
-                                    closeButtonDisplayText='Close'
-                                    handleDelete={() => this.handleDeleteBook(id, deleteBook)}
-                                    handleClose={this.handleHide}
-                                    size="lg"
-                                />
-                            </div>
+                        <div>
+                            <BookTable
+                                data={tableData}
+                                handleShow={this.handleShow}
+                                handleEditShow={this.handleEditShow} 
+                            />
+                            <DeleteModal
+                                show={this.state.show}
+                                title={'Default Title'}
+                                body={'Do you want to delete this book ?'}
+                                deleteButtonDisplayText='Delete Book'
+                                closeButtonDisplayText='Close'
+                                handleDelete={() => this.handleDeleteBook(deleteBook)}
+                                handleClose={this.handleHide}
+                                size="lg"
+                            />
                         </div>
                     )
                 }
