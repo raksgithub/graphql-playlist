@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Components
-import Table from '../common/Table/Table';
+import Table from '../common/Table';
 
 class BookTable extends Component {
     columns = () => [{

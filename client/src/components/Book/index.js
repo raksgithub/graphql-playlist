@@ -32,7 +32,8 @@ class Book extends Component {
                 query: getBooksQuery
             }],
         });
-        this.props.handleBookDelete(_get(response, 'data.deleteBook', {}));
+        this.props.onBookClick(_get(response, 'data.deleteBook.id', 0));
+        this.handleHide();
     }
 
     handleShow(bookId) {
