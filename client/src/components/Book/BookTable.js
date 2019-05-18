@@ -17,6 +17,18 @@ class BookTable extends Component {
         style: { textAlign: 'center' },
         sort: true
     }, {
+        dataField: 'authorName',
+        text: 'Author Name',
+        headerAlign: 'center',
+        style: { textAlign: 'center' },
+        sort: true
+    }, {
+        dataField: 'authorAge',
+        text: 'Author Age',
+        headerAlign: 'center',
+        style: { textAlign: 'center' },
+        sort: true
+    }, {
         dataField: 'actions',
         text: 'Actions',
         headerAlign: 'center',

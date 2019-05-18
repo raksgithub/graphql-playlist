@@ -7,6 +7,9 @@ import { getBooksQuery } from '../../graphql/queries/book';
 import Loader from '../../components/common/Loader';
 import BookDetail from './BookDetail';
 
+// Mappers
+import { mapBookTableData } from '../../mappers/book';
+
 class Books extends React.Component {
     constructor(props) {
         super(props);
@@ -42,7 +45,7 @@ class Books extends React.Component {
                 </div>
                 <hr />
                 <Book
-                    tableData={books}
+                    tableData={mapBookTableData(books)}
                     onBookClick={this.handleBookDelete}
                 />
             </div>
