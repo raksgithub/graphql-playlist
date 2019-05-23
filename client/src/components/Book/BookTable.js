@@ -32,7 +32,7 @@ class BookTable extends Component {
         dataField: 'actions',
         text: 'Actions',
         headerAlign: 'center',
-        style: { textAlign: 'center' },
+        style: { textAlign: 'center' },  
         csvExport: false,
         editable: false,
         formatter: this.actionsFormatter
@@ -64,10 +64,21 @@ class BookTable extends Component {
         order: 'desc'
     }];
 
+    onSelectAll = (isSelect, rows, e) => {
+        console.log({ isSelect, rows, e });
+    }
+
+    onSelect = (row, isSelect, index) => {
+        console.log({ isSelect, row, index });
+    }
+
     selectRow = () => ({
         mode: 'checkbox',
         style: { backgroundColor: '#c8e6c9' },
-        clickToSelect: false
+        clickToSelect: false,
+        onSelectAll: (isSelect, rows, e) => this.onSelectAll(isSelect, rows, e),
+        onSelect: (row, isSelect, index) => this.onSelect(row, isSelect, index)
+        // selected: false
     });
 
     render() {
