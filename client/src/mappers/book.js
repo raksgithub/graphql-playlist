@@ -7,7 +7,8 @@ const mapBookTableData = bookTableData => {
             name: _get(data, 'name'),
             genre: _get(data, 'genre'),
             authorName: _get(data, 'author.name'),
-            authorAge: _get(data, 'author.age')
+            authorAge: _get(data, 'author.age'),
+            __typename: _get(data, '__typename'),
         };
     });
     return bookData;
