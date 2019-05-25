@@ -11,6 +11,7 @@ import AddBook from './containers/Book/AddBook';
 import AddAuthor from './containers/Author/AddAuthor';
 import LandingPage from './components/LandingPage';
 import AppNavBar from './components/common/AppNavBar';
+import SideBar from './components/common/SideBar';
 
 // Static files
 
@@ -27,7 +28,8 @@ const App = () => {
         <div>
             <ApolloProvider client={client}>
                 <Router history={history}>
-                    <AppNavBar />
+                    {/* <AppNavBar /> */}
+                    <SideBar />
                     <div className="container">
                         <Switch>
                             <Route path='/' exact component={LandingPage} />

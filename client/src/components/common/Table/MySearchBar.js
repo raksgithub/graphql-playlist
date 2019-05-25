@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import { get as _get } from 'lodash';
 
 class MySearchBar extends Component {
     constructor(props){
         super(props);
-        this.term = React.createRef();
-        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleClick() {
+    handleChange(value) {
         const { onSearch } = this.props;
-        onSearch(this.term);
+        onSearch(value);
     }
 
     render() {
@@ -17,16 +17,10 @@ class MySearchBar extends Component {
             <div className='flex-row form-group'>
                 <input
                     className="form-control mr-2"
-                    ref={ n => this.term = n }
                     type="text"
                     placeholder='Search'
+                    onChange={e => this.handleChange(e.target.value)}
                 />
-                <button 
-                    className="btn btn-secondary" 
-                    onClick={ this.handleClick }
-                >
-                    Search
-                </button>
             </div>
         );
     }
