@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 // Components
 import Table from '../common/Table';
@@ -41,7 +42,12 @@ class BookTable extends Component {
     actionsFormatter = (cell, row, rowIndex, formatExtraData) => {
         return (
             <div>
-                <button className='btn btn-secondary mr-2'>Edit</button>
+                <button 
+                    className='btn btn-secondary mr-2'
+                    onClick={() => this.props.history.push(`/editBook/${row.id}`)}
+                >
+                    Edit
+                </button>
                 <button 
                     className='btn btn-danger' 
                     onClick={() => this.props.handleShow(row.id)}
@@ -103,4 +109,4 @@ class BookTable extends Component {
     }
 }
 
-export default BookTable;
+export default withRouter(BookTable);
