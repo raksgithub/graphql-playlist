@@ -2,8 +2,13 @@ const {
     GraphQLList,
     GraphQLID
 } = require('graphql');
+
+// GraphQL Types
 const { AuthorType } = require('../../types');
+
+// MongoDB Models
 const Author = require('../../../models/author');
+
 const getAuthorById = () => ({
     type: AuthorType,
     args: {
