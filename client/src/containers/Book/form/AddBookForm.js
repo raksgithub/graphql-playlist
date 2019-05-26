@@ -1,9 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { Query, graphql, compose } from 'react-apollo';
+import { Query } from 'react-apollo';
 import { getAuthorsQuery } from '../../../graphql/queries/author';
-import { addBookMutation } from '../../../graphql/mutations/book';
-import { getBooksQuery } from '../../../graphql/queries/book';
 import { get as _get } from 'lodash';
 
 // Components
@@ -12,20 +10,6 @@ import FormSelect from '../../../components/common/form/FormSelect';
 import Loader from '../../../components/common/Loader';
 
 let AddBookForm = props => {
-    const handleFormSubmit = values => {
-        const { bookName, bookGenre, author } = values;
-        this.props.addBookMutation({
-            variables: {
-                name: bookName, 
-                genre: bookGenre, 
-                authorId: author
-            },
-            refetchQueries: [{
-                query: getBooksQuery
-            }]
-        });
-        this.props.history.push('/books');
-    }
     const {
         handleSubmit,
         pristine,
@@ -33,6 +17,7 @@ let AddBookForm = props => {
         submitting,
         className,
         operationText,
+        handleFormSubmit
     } = props;
     return (
         <Query query={getAuthorsQuery}>
@@ -71,7 +56,7 @@ let AddBookForm = props => {
                                     className="btn btn-success"
                                     disabled={(!submitting && pristine) && !_get(props, 'initialValues')}
                                 >
-                                    {operationText ? _get(props, 'initialValues') ? 'Update Book' : operationText : 'Submit'}
+                                    {operationText ? operationText : 'Submit'}
                                 </button>
                                 {' '}
                                 <button
@@ -98,6 +83,4 @@ AddBookForm = reduxForm({
     destroyOnUnmount: true,
 })(AddBookForm);
 
-export default compose(
-    graphql(addBookMutation, { name: 'addBookMutation' }),
-)(AddBookForm);
+export default AddBookForm;
