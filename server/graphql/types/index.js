@@ -5,8 +5,11 @@ const {
     GraphQLID,
     GraphQLInt,
 } = require('graphql');
+
+// MongoDB Models
 const Book = require('../../models/book');
 const Author = require('../../models/author');
+
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
