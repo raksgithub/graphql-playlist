@@ -93,7 +93,7 @@ class BookTable extends Component {
                     search={true}
                     noDataIndication={this.indication()}
                     defaultSorted={this.defaultSorted()}
-                    // selectRow={this.selectRow()}
+                    selectRow={this.selectRow()}
                     isPagination={true}
                     cellEdit={true}
                     editMode='dbclick'

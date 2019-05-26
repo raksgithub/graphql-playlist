@@ -10,7 +10,7 @@ import AuthorContainer from './containers/Author';
 import AddBook from './containers/Book/AddBook';
 import AddAuthor from './containers/Author/AddAuthor';
 import LandingPage from './components/LandingPage';
-import AppNavBar from './components/common/AppNavBar';
+// import AppNavBar from './components/common/AppNavBar';
 import SideBar from './components/common/SideBar';
 
 // Static files
