@@ -2,8 +2,13 @@ const {
     GraphQLList,
     GraphQLID
 } = require('graphql');
+
+// GraphQL Types
 const { BookType } = require('../../types');
+
+// MongoDB Models
 const Book = require('../../../models/book');
+
 const getBookById = () => ({
     type: BookType,
     args: {
