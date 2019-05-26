@@ -8,6 +8,9 @@ import AddBookForm from './form/AddBookForm';
 import Loader from '../../components/common/Loader';
 
 class EditBook extends Component {
+    handleBookUpdate = values => {
+        console.log('Values=>>>', values);
+    }
     render() {
         return (
             <div>
@@ -25,12 +28,13 @@ class EditBook extends Component {
                             return (
                                 <AddBookForm
                                     className='mt-2'
-                                    operationText='Add Book'
+                                    operationText='Update Book'
                                     initialValues={{
                                         bookName: _get(data, 'book.name'),
                                         bookGenre: _get(data, 'book.genre'),
                                         author: _get(data, 'book.author.id')
                                     }}
+                                    handleFormSubmit={this.handleBookUpdate}
                                 />
                             );
                         }
