@@ -5,13 +5,15 @@
   "license": "MIT",
   "engines": {
     "node": "10.15.3",
+    "npm": "6.9.0",
     "yarn": "1.16.0"
   },
   "scripts": {
     "start": "node index.js",
     "both": "concurrently \"yarn run nodemon-start\" \"yarn run client\"",
     "nodemon-start": "nodemon index.js",
-    "client": "cd client && yarn start"
+    "client": "cd client && yarn start",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "dependencies": {
     "concurrently": "^4.1.0",
