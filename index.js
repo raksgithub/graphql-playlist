@@ -12,16 +12,17 @@ const app = express();
 // Enabling cors to allow cross origin access
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '/client/build/static')));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
-});
-
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true  
 }));
+
+app.use(express.static(path.join(__dirname, '/client/build/static')));
+
+app.get('/', (req, res) => {
+  res.redirect('/graphql');
+  res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
+});
 
 const port = process.env.PORT || 4000;
 
