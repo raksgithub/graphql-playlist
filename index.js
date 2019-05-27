@@ -19,8 +19,7 @@ app.use('/graphql', graphqlHTTP({
 
 app.use(express.static(path.join(__dirname, '/client/build/static')));
 
-app.get('/', (req, res) => {
-  res.redirect('/graphql');
+app.use('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
 });
 
