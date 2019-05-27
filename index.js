@@ -19,9 +19,7 @@ app.use('/graphql', graphqlHTTP({
 
 app.use(express.static(path.join(__dirname, '/client/build/static')));
 
-app.use('/', (req, res) => {
-  console.log('Path of index.html file', path.join(__dirname, '/client/build/', 'index.html'));
-  console.log('Path of static folder', path.join(__dirname, '/client/build/static'));
+app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
 });
 
