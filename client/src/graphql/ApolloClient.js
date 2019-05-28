@@ -11,7 +11,7 @@ const cache = new InMemoryCache({
 
 const client = new ApolloClient({
     // uri defaults to /graphql if we use the same domain
-    uri: `http://localhost:${process.env.PORT || 5000}/graphql`,
+    uri: process.env.NODE_ENV === 'production' ? 'https://book-author-app.herokuapp.com/graphql' : `http://localhost:${process.env.PORT || 5000}/graphql`,
     cache
 });
 
