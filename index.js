@@ -17,10 +17,10 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true  
 }));
 
-app.use(express.static(path.join(__dirname, '/client/build/static')));
+app.use(express.static(path.join(__dirname, 'client', 'build', 'static')));
 
 app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 const port = process.env.PORT || 4000;
