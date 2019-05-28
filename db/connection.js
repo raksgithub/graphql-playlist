@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const connection = mongoose.connect('mongodb://guest01:Aksguest01@ds135456.mlab.com:35456/aks-graphql-db', {
+const mongo_uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@aksmongocluster01-tolb7.mongodb.net/test?retryWrites=true`;
+
+const connection = mongoose.connect(mongo_uri, {
     useNewUrlParser: true
 });
 
