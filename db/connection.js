@@ -10,4 +10,8 @@ mongoose.connection.once('open', () => {
     console.log('DB connection established.');
 });
 
+mongoose.connection.on('error', err => {
+    console.log('Error has occured', err);
+});
+
 module.exports = connection;
