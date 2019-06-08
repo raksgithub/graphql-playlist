@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, compose } from 'react-apollo';
+import { Mutation } from 'react-apollo';
 import { addBookMutation } from '../../graphql/mutations/book';
 import { getBooksQuery } from '../../graphql/queries/book';
 
@@ -7,32 +7,46 @@ import { getBooksQuery } from '../../graphql/queries/book';
 import AddBookForm from './form/AddBookForm';
 
 const AddBook = props => {
-    const handleFormSubmit = values => {
-        const { bookName, bookGenre, author } = values;
-        props.addBookMutation({
+    const handleFormSubmit = async (values, addBook) => {
+        const { bookName, bookGenre, author: { value } } = values;
+        const response = await addBook({
             variables: {
-                name: bookName, 
-                genre: bookGenre, 
-                authorId: author
-            },
-            refetchQueries: [{
-                query: getBooksQuery
-            }]
+                name: bookName,
+                genre: bookGenre,
+                authorId: value
+            }
         });
+        console.log('Response', response);
         props.history.push('/books');
     }
+
+    const handleBookUpdate = (cache, { data: { addBook } }) => {
+        const { books } = cache.readQuery({ query: getBooksQuery });
+        cache.writeQuery({
+            query: getBooksQuery,
+            data: { books: books.concat([addBook]) }
+        });
+    }
+
     return (
         <div>
             <h2>Add New Book</h2>
-            <AddBookForm
-                className='mt-2'
-                operationText='Add Book'
-                handleFormSubmit={handleFormSubmit}
-            />
+            <Mutation
+                mutation={addBookMutation}
+                update={handleBookUpdate}
+            >
+                {
+                    addBook => (
+                        <AddBookForm
+                            className='mt-2'
+                            operationText='Add Book'
+                            handleFormSubmit={values => handleFormSubmit(values, addBook)}
+                        />
+                    )
+                }
+            </Mutation>
         </div>
     );
 }
 
-export default compose(
-    graphql(addBookMutation, { name: 'addBookMutation' }),
-)(AddBook); 
+export default AddBook; 

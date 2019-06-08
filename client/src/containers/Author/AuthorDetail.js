@@ -11,6 +11,7 @@ class AuthorDetail extends Component {
         super(props);
         this.state = {};
     }
+
     renderBooks = books => {
         return (
             <div>
@@ -21,6 +22,7 @@ class AuthorDetail extends Component {
             </div>
         );
     }
+
     render() {
         const { authorId } = this.props;
         if (!authorId) {

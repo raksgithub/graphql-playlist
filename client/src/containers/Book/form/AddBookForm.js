@@ -6,7 +6,7 @@ import { get as _get } from 'lodash';
 
 // Components
 import FormInput from '../../../components/common/form/FormInput';
-import FormSelect from '../../../components/common/form/FormSelect';
+import ReactSelect from '../../../components/common/form/ReactSelect';
 import Loader from '../../../components/common/Loader';
 
 let AddBookForm = props => {
@@ -25,6 +25,7 @@ let AddBookForm = props => {
                 ({ data, loading, error }) => {
                     if (error) return 'error';
                     if (loading) return <Loader />;
+                    debugger;
                     return (
                         <form onSubmit={handleSubmit(handleFormSubmit)} className={className}>
                             <Field
@@ -45,9 +46,11 @@ let AddBookForm = props => {
                             />
                             <Field
                                 name='author'
-                                component={FormSelect}
+                                component={ReactSelect}
                                 label='Author Name'
-                                data={_get(data, 'authors')}
+                                data={_get(data, 'authors').map(author => {
+                                    return { label: _get(author, 'name'), value: _get(author, 'id') };
+                                })}
                                 firstOptionName='--Select Author--'
                             />
                             <div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { addAuthorMutation } from '../../graphql/mutations/author';
 import { getAuthorsQuery } from '../../graphql/queries/author';
-import { Mutation } from 'react-apollo';
+import { Mutation } from 'react-apollo'; 
 
 class AddAuthor extends Component {
     constructor(props) {
@@ -12,18 +12,16 @@ class AddAuthor extends Component {
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
+
     async handleFormSubmit(e, addAuthor) {
         e.preventDefault();
         const { name, age } = this.state;
         const response = await addAuthor({
             variables: {
                 name, age
-            },
-            refetchQueries: [{
-                query: getAuthorsQuery
-            }]
+            }
         });
-        console.log('Response=>>>>', response);
+        console.log('Response', response);
         this.setState({
             name: '',
             genre: '',
@@ -32,11 +30,22 @@ class AddAuthor extends Component {
         this.props.history.push('/authors');
 
     }
+
+    handleAuthorsUpdate = (cache, { data: { addAuthor } }) => {
+        const { authors } = cache.readQuery({ query: getAuthorsQuery });
+        cache.writeQuery({
+            query: getAuthorsQuery,
+            data: { authors: authors.concat([addAuthor]) }
+        });
+    }
     render() {
         return (
             <div>
                 <h2>Add New Author</h2>
-                <Mutation mutation={addAuthorMutation}>
+                <Mutation 
+                    mutation={addAuthorMutation}
+                    update={this.handleAuthorsUpdate}
+                >
                     {
                         (addAuthor, { data }) => (
                             <form onSubmit={(e) => this.handleFormSubmit(e, addAuthor)} className="mt-2">

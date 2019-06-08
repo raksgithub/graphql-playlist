@@ -5,6 +5,11 @@ export const getAuthorsQuery = gql`query {
         name
         age
         id
+        books {
+            id
+            name
+            genre
+        }   
     }
 }`;
 

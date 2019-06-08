@@ -1,51 +1,51 @@
-@import './variables/index.scss';
-@import './mixins/index.scss';
+@import "./variables/index.scss";
+@import "./mixins/index.scss";
 
 .row-item.list-group-item {
-    @include flex-row-space-between();
+  @include flex-row-space-between();
 }
 
 .flex-row {
-    @include flex-row-space-between();
+  @include flex-row-space-between();
 }
 
 .bookName {
-    width: 540px;
-    background-color: rgba(112, 95, 160, 0.24);
-    text-align: center;
-    padding: $padding-5;
-    border-radius: 5px;
-    cursor: pointer;
-    &:hover {
-        font-size: 20px;
-    }
+  width: 540px;
+  background-color: rgba(112, 95, 160, 0.24);
+  text-align: center;
+  padding: $padding-5;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    font-size: 20px;
+  }
 }
 
 .loader {
-    position: relative;
-    // left: 200px;
-    text-align: center;
-    margin: 100px;
+  position: relative;
+  // left: 200px;
+  text-align: center;
+  margin: 100px;
 }
 
 .book-list-header {
-    font-size: 20px;
-    .add-navigation-button {
-        position: relative;
-        left: 950px;
-        text-decoration: none;
-        button {
-            width: 50px;
-            height: 46px;
-            border-radius: 20px 20px 20px 20px;
-            background-color: rgba(144, 47, 151, 0.671);
-            border: none;
-            color: white;
-            font-size: 30px;
-        }
+  font-size: 20px;
+  .add-navigation-button {
+    position: relative;
+    left: 950px;
+    text-decoration: none;
+    button {
+      width: 50px;
+      height: 46px;
+      border-radius: 20px 20px 20px 20px;
+      background-color: rgba(144, 47, 151, 0.671);
+      border: none;
+      color: white;
+      font-size: 30px;
     }
+  }
 }
 
 thead {
-    background-color: darkturquoise,
+  background-color: darkturquoise;
 }

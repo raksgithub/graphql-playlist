@@ -50,7 +50,7 @@ class BookTable extends Component {
                 </button>
                 <button 
                     className='btn btn-danger' 
-                    onClick={() => this.props.handleShow(row.id)}
+                    onClick={() => this.props.handleShow(row.id, row.name)}
                 >
                     Delete
                 </button>

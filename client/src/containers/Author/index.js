@@ -4,8 +4,7 @@ import { getAuthorsQuery } from '../../graphql/queries/author'
 
 // Components
 import Loader from '../../components/common/Loader';
-import Author from '../../components/Author';
-import AuthorDetail from './AuthorDetail';
+import AuthorTable from './AuthorTable';
 
 class AuthorContainer extends Component {
     constructor(props) {
@@ -27,13 +26,12 @@ class AuthorContainer extends Component {
                                 <Loader />
                             );
                         }
-                        // console.log('Data=>>>', data);
                         const { authors } = data;
                         return (
                             <div>
                                 <div className='book-list-header'>
                                     Author List
-                                    <span className='add-navigation-button'>
+                                     <span className='add-navigation-button'>
                                         <button
                                             title='Add an author'
                                             onClick={() => this.props.history.push('/addAuthor')}
@@ -42,28 +40,7 @@ class AuthorContainer extends Component {
                                         </button>
                                     </span>
                                 </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-sm-8 col-6">
-                                        <div className="list-group">
-                                            {authors.map((author, index) => (
-                                                <Author
-                                                    key={author.id}
-                                                    id={author.id}
-                                                    name={author.name}
-                                                    age={author.age}
-                                                    index={index}
-                                                    onAuthorClick={() => this.setState({ selectedAuthorId: author.id })}
-                                                />
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-4 col-6">
-                                        <AuthorDetail
-                                            authorId={this.state.selectedAuthorId} 
-                                        />
-                                    </div>
-                                </div>
+                                <AuthorTable data={authors} />
                             </div>
                         );
                     }
@@ -74,3 +51,4 @@ class AuthorContainer extends Component {
 }
 
 export default AuthorContainer;
+

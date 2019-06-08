@@ -2,6 +2,7 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import { deleteAuthorMutation } from '../../graphql/mutations/author';
 import { getAuthorsQuery } from '../../graphql/queries/author';
+import { getBooksQuery } from '../../graphql/queries/book';
 import { get as _get } from 'lodash';
 
 // Components
@@ -18,6 +19,7 @@ class Author extends React.Component {
         this.handleShow = this.handleShow.bind(this);
         this.handleHide = this.handleHide.bind(this);
     }
+
     async handleDeleteAuthor(authorId, deleteAuthor) {
         const response = await deleteAuthor({
             variables: {
@@ -25,6 +27,8 @@ class Author extends React.Component {
             },
             refetchQueries: [{
                 query: getAuthorsQuery
+            }, {
+                query: getBooksQuery
             }],
         });
         const deletedAuthor = _get(response, 'data.deleteAuthor', {});

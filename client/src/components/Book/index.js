@@ -12,6 +12,7 @@ class Book extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            bookTitle: '',
             show: false,
             bookId: null,
             lastDeletedBook: {},
@@ -35,8 +36,8 @@ class Book extends Component {
         this.handleHide();
     }
 
-    handleShow(bookId) {
-        this.setState({ show: true, bookId });
+    handleShow(bookId, bookTitle) {
+        this.setState({ show: true, bookId, bookTitle });
     }
 
     handleEditShow() {
@@ -49,6 +50,7 @@ class Book extends Component {
 
     render() {
         const { tableData } = this.props;
+        const { bookTitle } = this.state;
         return (
             <Mutation mutation={deleteBookMutation}>
                 {
@@ -61,7 +63,7 @@ class Book extends Component {
                             />
                             <DeleteModal
                                 show={this.state.show}
-                                title={'Default Title'}
+                                title={bookTitle}
                                 body={'Do you want to delete this book ?'}
                                 deleteButtonDisplayText='Delete Book'
                                 closeButtonDisplayText='Close'
