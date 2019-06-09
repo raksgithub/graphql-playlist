@@ -3,6 +3,9 @@
 # ignoring nodemon.json file
 /nodemon.json
 
+# ignoring public & private authentication keys
+/authenticationKeys
+
 # dependencies
 /node_modules
 /.pnp
