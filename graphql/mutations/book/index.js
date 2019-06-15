@@ -23,7 +23,10 @@ const addBook = () => ({
             type: new GraphQLNonNull(GraphQLID)
         }
     },
-    async resolve(parent, args) {
+    async resolve(parent, args, context) {
+        if(!_get(context, 'userId')) {
+            throw new Error('You are not a legitimate user to access this route');
+        }
         try {
             const newBook = await Book.create({
                 name: args.name,
@@ -49,7 +52,10 @@ const updateBook = () => ({
             type: new GraphQLNonNull(GraphQLString)
         }
     },
-    async resolve(parent, args) {
+    async resolve(parent, args, context) {
+        if(!_get(context, 'userId')) {
+            throw new Error('You are not a legitimate user to access this route');
+        }
         try {
             const updatedBook = await Book.findByIdAndUpdate(args.id, { genre: args.genre }, { new: true });
             console.log('Author has been updated', updatedBook);
@@ -68,7 +74,10 @@ const deleteBook = () => ({
             type: new GraphQLNonNull(GraphQLID)
         }
     },
-    async resolve(parent, args) {
+    async resolve(parent, args, context) {
+        if(!_get(context, 'userId')) {
+            throw new Error('You are not a legitimate user to access this route');
+        }
         try {
             const deletedBook = await Book.findByIdAndDelete(args.id);
             console.log('Book has been deleted', deletedBook);

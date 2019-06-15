@@ -17,7 +17,10 @@ const getBookById = () => ({
             type: GraphQLID
         }
     },
-    async resolve(parent, args) {
+    async resolve(parent, args, context) {
+        if(!_get(context, 'userId')) {
+            throw new Error('You are not a legitimate user to access this route');
+        }
         try {
             const book = await Book.findById(args.id);
             return book;

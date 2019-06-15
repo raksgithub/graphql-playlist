@@ -16,7 +16,10 @@ const getAuthorById = () => ({
             type: GraphQLID
         }
     },
-    async resolve(parent, args) {
+    async resolve(parent, args, context) {
+        if(!_get(context, 'userId')) {
+            throw new Error('You are not a legitimate user to access this route');
+        }
         try {
             const author = await Author.findById(args.id);
             return author;
@@ -29,7 +32,10 @@ const getAuthorById = () => ({
 
 const getAuthors = () => ({
     type: new GraphQLList(AuthorType),
-    async resolve() {
+    async resolve(_, args, context) {
+        if(!_get(context, 'userId')) {
+            throw new Error('You are not a legitimate user to access this route');
+        }
         try {
             const authors = await Author.find();
             return authors;
