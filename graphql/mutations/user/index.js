@@ -50,7 +50,6 @@ const signInUser = () => ({
         }
     },
     async resolve(parent, args) {
-        console.log('Parent', parent);
         try {
             const user = await User.findOne({ username: _get(args, 'username') });
             if(!user) {

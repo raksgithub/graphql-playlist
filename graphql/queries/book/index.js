@@ -2,6 +2,7 @@ const {
     GraphQLList,
     GraphQLID
 } = require('graphql');
+const { get: _get } = require('lodash');
 
 // GraphQL Types
 const { BookType } = require('../../types');
@@ -29,7 +30,10 @@ const getBookById = () => ({
 
 const getBooks = () => ({
     type: new GraphQLList(BookType),
-    async resolve() {
+    async resolve(_, args, context) {
+        if(!_get(context, 'userId')) {
+            throw new Error('You are not a legitimate user to access this route');
+        }
         try {
             const books = await Book.find();
             return books;
