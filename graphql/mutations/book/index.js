@@ -3,6 +3,7 @@ const {
     GraphQLID,
     GraphQLNonNull
 } = require('graphql');
+const { get: _get } = require('lodash');
 
 // GraphQL Types
 const { BookType } = require('../../types');

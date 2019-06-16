@@ -2,6 +2,7 @@ const {
     GraphQLList,
     GraphQLID
 } = require('graphql');
+const { get: _get } = require('lodash');
 
 // GraphQL Types
 const { AuthorType } = require('../../types');
