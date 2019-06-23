@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 // Reusable States
-import useSnackbar from '../../components/hooks/useSnackbar';
+import useSnackbar from '../../components/hooks/useSnackbar.ts';
 
 // Components
 import LoginForm from './LoginForm';
@@ -26,8 +26,6 @@ const LoginContainer = props => {
     }
 
     const handleClose = (event, reason) => {
-        debugger;
-        console.log('Handle Close closed!!!!');
         if (reason === 'clickaway' || reason === 'timeout') {
             return;
         }

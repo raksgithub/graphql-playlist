@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useSnackbar = (path, push) => {
+const useSnackbar = (path: string, push: any): Array<any> => {
     const [state, setState] = useState({
         open: false,
         variant: '',

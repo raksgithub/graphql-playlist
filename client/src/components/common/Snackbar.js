@@ -78,8 +78,8 @@ MySnackbarContentWrapper.propTypes = {
     variant: PropTypes.oneOf(['success', 'warning', 'error', 'info', '']).isRequired,
 };
 
-function TransitionRight(props) {
-    return <Slide {...props} direction="right" />;
+const TransitionRight = props => {
+    return <Slide direction="right" {...props} />;
 }
 
 const MySnackbar = props => {
@@ -99,7 +99,6 @@ const MySnackbar = props => {
                 open={open}
                 //autoHideDuration={autoHideDuration}
                 onClose={handleClose}
-                //TransitionComponent={<Slide {...props} direction="right" />}
             >
                 <MySnackbarContentWrapper
                     onClose={handleClose}
