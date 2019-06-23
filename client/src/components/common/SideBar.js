@@ -14,7 +14,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import Button from '@material-ui/core/Button';
 import { LinkContainer } from 'react-router-bootstrap';
+import { connect } from 'react-redux';
+import { get as _get } from 'lodash';
+import { withRouter } from 'react-router-dom';
+import { persistor } from '../../store';
+import { signOut } from '../../actions/signIn';
 
 const drawerWidth = 240;
 
@@ -55,9 +61,13 @@ const useStyles = makeStyles(theme => ({
         }),
         marginLeft: 0,
     },
+    signInButton: {
+        color: 'black',
+        marginLeft: theme.spacing(120)
+    }
 }));
 
-const SideBar = () => {
+const SideBar = props => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -69,6 +79,17 @@ const SideBar = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     }
+
+    const handleLoginClick = () => {
+        const { token, signOut } = props;
+        if (token) {
+            persistor.purge();
+            persistor.flush();
+            signOut();
+        }
+        props.history.push('/login');
+    }
+    const { token } = props;
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -105,6 +126,14 @@ const SideBar = () => {
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
+                        <Button
+                            variant='contained'
+                            size='small'
+                            className={classes.signInButton}
+                            onClick={handleLoginClick}
+                        >
+                            {token ? 'Logout' : 'Login'}
+                        </Button>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -145,4 +174,12 @@ const SideBar = () => {
     );
 }
 
-export default SideBar;
+const mapStateToProps = state => ({
+    token: _get(state, 'signInReducer.token')
+});
+
+const mapDispatchToProps = dispatch => ({
+    signOut: () => dispatch(signOut())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SideBar));
