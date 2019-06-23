@@ -28,7 +28,7 @@ const MuiTextField = props => {
                 InputProps={inputProps}
             />
             {(touched || dirty) && error && (
-                <div>{error}</div>
+                <div className='yup-error'>{error}</div>
             )}
             {(touched || dirty) && warning && (
                 <div>{warning}</div>

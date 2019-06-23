@@ -19,6 +19,7 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "clsx": "^1.0.4",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -30,6 +31,7 @@
     "mongoose": "^5.5.5",
     "npm": "^6.9.0",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react-select": "^3.0.4"
   }
 }

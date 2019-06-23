@@ -19,7 +19,7 @@ const LoginForm = props => {
     const handleClickShowPassword = () => {
         setState({ ...state, showPassword: !state.showPassword });
     };
-    const { classes: { form, textField, submitButton }, handleSubmit, handleFormSubmit } = props;
+    const { classes: { form, textField, submitButton }, handleSubmit, handleFormSubmit, error, pristine, invalid } = props;
     return (
         <form
             onSubmit={handleSubmit(handleFormSubmit)} 
@@ -63,6 +63,7 @@ const LoginForm = props => {
                 color='primary'
                 variant="contained"
                 className={submitButton}
+                disabled={(error && pristine) || invalid}
             >
                 Login
                 </Button>
