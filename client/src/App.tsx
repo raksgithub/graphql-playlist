@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 
 // Components
+import LoginContainer from './containers/login';
 import Books from './containers/Book/Books';
 import AuthorContainer from './containers/Author';
 import AddBook from './containers/Book/AddBook';
@@ -35,6 +36,7 @@ const App = () => {
                         <div className="container">
                             <Switch>
                                 <Route path='/' exact component={LandingPage} />
+                                <Route path='/login' exact component={LoginContainer} />
                                 <Route path='/books' exact component={Books} />
                                 <Route path='/addBook' exact component={AddBook} />
                                 <Route path='/editBook/:id' exact component={EditBook} />
