@@ -1,5 +1,12 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import { graphql, compose } from 'react-apollo';
+import { get as _get } from 'lodash';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions/signIn';
+
+// GQL Mutation
+import { loginMutation } from '../../graphql/mutations/login';
 
 // Reusable States
 import useSnackbar from '../../components/hooks/useSnackbar.ts';
@@ -16,13 +23,32 @@ const LoginContainer = props => {
     
     const [state, setState] = useSnackbar('/', props.history.push);
 
-    const handleFormSubmit = values => {
-        setState({
-            ...state,
-            open: true,
-            variant: 'success',
-            message: 'Logged in successfully.'
+    const handleFormSubmit = async ({ username, password }) => {
+        const { loginMutation, signIn } = props;
+        const response = await loginMutation({
+            variables: {
+                username,
+                password
+            }
         });
+        const { status, message, token } = _get(response, 'data.signInUser');
+        if(token) {
+            setState({
+                ...state,
+                open: true,
+                variant: 'success',
+                message: 'Logged in successfully.'
+            });
+            signIn(token);
+        } else {
+            setState({
+                ...state,
+                open: true,
+                variant: status == 404 ? 'error' : 'warning',
+                message
+            });
+        }
+        console.log('Response=>>>>', response);
     }
 
     const handleClose = (event, reason) => {
@@ -52,4 +78,11 @@ const LoginContainer = props => {
     );
 }
 
-export default LoginContainer;
+const mapDispatchToProps = dispatch => ({
+    signIn: token => dispatch(signIn(token))
+});
+
+export default compose(
+    graphql(loginMutation, { name: 'loginMutation' }),
+    connect(null, mapDispatchToProps)
+)(LoginContainer);

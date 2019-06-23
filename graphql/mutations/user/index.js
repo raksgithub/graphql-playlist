@@ -56,7 +56,7 @@ const signInUser = () => ({
                 return {
                     token: null,
                     status: '404',
-                    message: 'You are not a valid legitimate user.'
+                    message: 'You are not a valid legitimate user. Please sign up first.'
                 }
             }
             if(!await comparePassword(_get(args, 'password'), _get(user, 'password'))) {

@@ -4,7 +4,8 @@ import history from './history';
 import client from './graphql/ApolloClient';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { store, persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 // Components
 import LoginContainer from './containers/login';
@@ -31,20 +32,22 @@ const App = () => {
         <div>
             <ApolloProvider client={client}>
                 <Provider store={store}>
-                    <Router history={history}>
-                        <SideBar />
-                        <div className="container">
-                            <Switch>
-                                <Route path='/' exact component={LandingPage} />
-                                <Route path='/login' exact component={LoginContainer} />
-                                <Route path='/books' exact component={Books} />
-                                <Route path='/addBook' exact component={AddBook} />
-                                <Route path='/editBook/:id' exact component={EditBook} />
-                                <Route path='/authors' exact component={AuthorContainer} />
-                                <Route path='/addAuthor' exact component={AddAuthor} />
-                            </Switch>
-                        </div>
-                    </Router>
+                    <PersistGate persistor={persistor} loading={'...Loading'}>
+                        <Router history={history}>
+                            <SideBar />
+                            <div className="container">
+                                <Switch>
+                                    <Route path='/' exact component={LandingPage} />
+                                    <Route path='/login' exact component={LoginContainer} />
+                                    <Route path='/books' exact component={Books} />
+                                    <Route path='/addBook' exact component={AddBook} />
+                                    <Route path='/editBook/:id' exact component={EditBook} />
+                                    <Route path='/authors' exact component={AuthorContainer} />
+                                    <Route path='/addAuthor' exact component={AddAuthor} />
+                                </Switch>
+                            </div>
+                        </Router>
+                    </PersistGate>
                 </Provider>
             </ApolloProvider>
         </div>
