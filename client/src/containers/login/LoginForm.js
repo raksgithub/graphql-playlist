@@ -31,7 +31,7 @@ const LoginForm = props => {
                 id="outlined-email-input"
                 label="Username"
                 className={textField}
-                type="test"
+                type="text"
                 autoComplete='off'
                 margin="normal"
                 variant="outlined"
@@ -66,7 +66,7 @@ const LoginForm = props => {
                 disabled={(error && pristine) || invalid}
             >
                 Login
-                </Button>
+            </Button>
         </form>
     );
 }
@@ -76,5 +76,5 @@ export default reduxForm({
     asyncValidate,
     keepDirtyOnReinitialize: true,
     enableReinitialize: true,
-    destroyOnUnmount: true,
+    destroyOnUnmount: true, 
 })(LoginForm);

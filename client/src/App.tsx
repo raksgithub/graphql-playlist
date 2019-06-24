@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
 import client from './graphql/ApolloClient';
@@ -15,7 +15,7 @@ import AddBook from './containers/Book/AddBook';
 import EditBook from './containers/Book/EditBook';
 import AddAuthor from './containers/Author/AddAuthor';
 import LandingPage from './components/LandingPage';
-import SideBar from './components/common/SideBar';
+import SideBar from './components/common/sidebar/SideBar';
 
 // Static files
 
@@ -27,7 +27,7 @@ import './styles/css/App.css';
 // SCSS
 import './styles/scss/main.scss';
 
-const App = () => {
+const App: FC = () => {
     return (
         <div>
             <ApolloProvider client={client}>
