@@ -1,5 +1,7 @@
 const Joi = require('@hapi/joi');
 
+const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+
 const schema = Joi.object().keys({
     username: Joi
         .string()
@@ -9,7 +11,7 @@ const schema = Joi.object().keys({
         .required('Username is required.'),
     password: Joi
         .string()
-        .regex(/^[a-zA-Z0-9]{3,30}$/)
+        .regex(passwordRegEx)
         .required('Password is required.')
 });
 

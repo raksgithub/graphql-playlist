@@ -12,7 +12,7 @@ const validateUser = async values => {
         }
     }
     catch(err) {
-        console.log('Error has occured while validating User', err);
+        console.log('Error has occured while validating User', err.message);
     }
 }
 

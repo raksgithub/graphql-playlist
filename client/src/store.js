@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 
 const persistConfig = {
     key: 'root',
-    storage
+    storage,
+    stateReconciler: hardSet,
+    blacklist: ['form']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer);

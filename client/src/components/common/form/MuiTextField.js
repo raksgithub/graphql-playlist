@@ -14,7 +14,6 @@ const MuiTextField = props => {
         variant,
         inputProps = {}
     } = props;
-    debugger;
     return (
         <div>
             <TextField

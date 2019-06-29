@@ -21,7 +21,6 @@ const verifyOptions = {
 
 // Sign JWT => Returns signed token
 const signJWT = async payload => {
-    console.log('private_key=>', process.env);
     try {
         const signedToken = await jwt.sign(payload, privateKey, signOptions);
         const bearerToken = `Bearer ${signedToken}`;

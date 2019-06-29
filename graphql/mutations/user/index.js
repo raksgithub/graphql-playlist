@@ -54,7 +54,7 @@ const signInUser = () => ({
         try {
             const username = _get(args, 'username');
             const password = _get(args, 'password');
-            const isValidated = validateUser({ username, password });
+            const isValidated = await validateUser({ username, password });
             if (isValidated) {
                 const user = await User.findOne({ username });
                 if (!user) {
