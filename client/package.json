@@ -20,7 +20,7 @@
     "classnames": "2.2.5",
     "fstream": "^1.0.12",
     "graphql": "^14.4.2",
-    "jquery": "1.9.1",
+    "jquery": "^3.4.1",
     "lodash": "^4.17.14",
     "lodash-es": "^4.17.14",
     "lodash.template": "^4.5.0",
