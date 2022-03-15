@@ -22,7 +22,7 @@
     "graphql": "^14.4.2",
     "jquery": "^3.4.1",
     "lodash": "^4.17.14",
-    "lodash-es": "^4.17.14",
+    "lodash-es": "^4.17.21",
     "lodash.template": "^4.5.0",
     "node-sass": "^4.12.0",
     "popper.js": "1.14.7",
